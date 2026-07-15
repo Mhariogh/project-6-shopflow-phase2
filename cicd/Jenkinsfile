@@ -66,7 +66,7 @@ pipeline {
             steps {
                 dir("${SERVICE_DIR}") {
                     sh '''
-                        mvn -B -ntp deploy:deploy-file \
+                        mvn -B -ntp -s ${WORKSPACE}/cicd/settings-nexus.xml deploy:deploy-file \
                           -Durl=${NEXUS_URL} \
                           -DrepositoryId=nexus \
                           -Dfile=target/app.jar \
