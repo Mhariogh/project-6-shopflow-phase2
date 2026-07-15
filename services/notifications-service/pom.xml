@@ -20,7 +20,7 @@
     <java.version>17</java.version>
     <spring-cloud-aws.version>3.1.1</spring-cloud-aws.version>
     <spring-framework.version>6.2.11</spring-framework.version>
-    <jackson.version>2.18.8</jackson.version>
+    <jackson-bom.version>2.18.8</jackson-bom.version>
   </properties>
 
   <dependencyManagement>
@@ -57,6 +57,11 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.18.8</version>
     </dependency>
   </dependencies>
 
