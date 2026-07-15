@@ -101,7 +101,7 @@ pipeline {
                     export AWS_SECRET_ACCESS_KEY=$AWS_CREDS_PSW
                     aws eks update-kubeconfig --region ${AWS_REGION} --name ${EKS_CLUSTER}
                     helm upgrade --install shopflow helm/shopflow \
-                      --reuse-values \
+                      \
                       --set image.tag=${IMAGE_TAG}
                     kubectl rollout status deployment/${SERVICE}-service --timeout=180s
                 '''
