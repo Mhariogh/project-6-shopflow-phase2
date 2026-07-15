@@ -28,7 +28,9 @@ pipeline {
         AWS_CREDS    = credentials('aws-ecr')
         SONAR_TOKEN  = credentials('sonar-token')
         NEXUS_CREDS  = credentials('nexus')
-    }
+        NEXUS_USERNAME = "${NEXUS_CREDS_USR}"
+        NEXUS_PASSWORD = "${NEXUS_CREDS_PSW}"
+     }
 
     stages {
         stage('Checkout') { steps { checkout scm } }
@@ -68,8 +70,7 @@ pipeline {
                           -Durl=${NEXUS_URL} \
                           -DrepositoryId=nexus \
                           -Dfile=target/app.jar \
-                          -DgroupId=com.shopflow -DartifactId=${SERVICE}-service -Dversion=1.0.${BUILD_NUMBER} -Dpackaging=jar \
-                          -Dusername=${NEXUS_CREDS_USR} -Dpassword=${NEXUS_CREDS_PSW}
+                          -DgroupId=com.shopflow -DartifactId=${SERVICE}-service -Dversion=1.0.${BUILD_NUMBER} -Dpackaging=jar
                     '''
                 }
             }
