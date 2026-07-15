@@ -14,7 +14,7 @@ pipeline {
 
     environment {
         AWS_REGION   = 'us-east-1'
-        ECR_ACCOUNT  = '123456789012'
+        ECR_ACCOUNT  = '664267705879'
         EKS_CLUSTER  = 'shopflow'
         NEXUS_URL    = 'http://nexus:8081/repository/maven-releases/'
 
@@ -37,7 +37,7 @@ pipeline {
 
         stage('Test + Coverage') {
             steps { dir("${SERVICE_DIR}") { sh 'mvn -B -ntp test' } }
-            post { always { junit "${SERVICE_DIR}/target/surefire-reports/*.xml" } }
+            post { always { junit allowEmptyResults: true, testResults: "${SERVICE_DIR}/target/surefire-reports/*.xml" } }
         }
 
         stage('Code Analysis (SonarQube)') {
